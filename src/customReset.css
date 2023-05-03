@@ -53,19 +53,7 @@ select{appearance:none;}
 select option[disabled]{color: #999;}
 button{background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; overflow:visible; cursor:pointer}
 
-@media screen and (max-width:1200px){
-    html,body{
-        font-size:14px;
-    }
-}
-
-@media screen and (max-width:768px){
-    html, body{
-        font-size:12px;
-    }
-}
-
-:root{
+/* :root{
     --inner-width: 1080px;
     --main-color: #F4A000;
     --header-height: 100px;
@@ -95,4 +83,4 @@ button{background: inherit ; border:none; box-shadow:none; border-radius:0; padd
     :root{
         --inner-side-space: 20px;
     }
-}
+} */
