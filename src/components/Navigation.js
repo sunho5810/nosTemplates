@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
+/* 
+    styled 라이브러리 사용해보기
+    rudecer에서 메인컬러, 폰트컬러 등등 미리 지정해놓고 변수로 바꿔보기
+    효율적일까?
+*/
+
 const Navigation = () => {
 
     const [menuOpen, setMenuOpen] = useState(false);
