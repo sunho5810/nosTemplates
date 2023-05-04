@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import { Route, Routes } from 'react-router-dom'
@@ -11,10 +11,25 @@ import GloablStyle from '../styles/GlobalStyle';
 const {Wrap} = CommonStyle;
 
 const Homepage = () => {
+
+  const [isWeb, setIsWeb] = useState(true);
+
+  useEffect(() => {
+    console.log("isWeb33?", isWeb)
+  }, [isWeb]);
+
+  useEffect(() => {
+    window.innerWidth <= 1080 ? setIsWeb(false) : setIsWeb(true);
+    console.log("isWeb11?", isWeb);
+    window.addEventListener("resize", function(){
+      this.innerWidth <= 1080 ? setIsWeb(false) : setIsWeb(true);
+        console.log("isWeb22?", isWeb);
+    })
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <Wrap>
-        <Navigation/>
+        <Navigation isWeb={isWeb}/>
           <Routes>
             <Route path='/' element={<Main/>}/>
             <Route path='/sub'/>

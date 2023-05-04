@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 
+
 const HeaderWrap = styled.header`
   ${({ theme }) => {
     return css`
@@ -21,11 +22,11 @@ const HeaderWrap = styled.header`
       }
 
       &:hover {
-        height: ${({isWeb, maxMenuLength}) => (isWeb) ? `calc(
+        height: ${({isWeb, maxMenuLength}) => (isWeb) && `calc(
           ${theme.headerTheme.headerHeight.desktop} + (
             ${theme.headerTheme.menuDepth2Height.desktop} * ${maxMenuLength + 1}
           )
-        )` : ""};
+        )`};
         transition-duration: ${({isWeb}) => (isWeb ? "0.4s" : "0.2s")};
 
         .navDepth02 {
@@ -80,13 +81,6 @@ const Header = styled.div`
           transition-property: left;
           transition-duration: ${({menuOpen}) => (menuOpen ? "0.4s" : "0.2s")};
         }
-
-        .navDepth02 {
-          display: none;
-          position: static;
-          opacity: 1;
-          padding-top: 0;
-        }
       }
     `;
   }}
@@ -120,23 +114,27 @@ const NavDepth01Li = styled.li`
         background: ${theme.bgColor.main};
       }
 
-      &:hover .navDepth01__li__link,
-      &.active .navDepth01__li__link {
+      &:hover .navDepth01__li__link {
         font-weight: bold;
         color: ${theme.fontColor.main};
       }
 
       ${theme.deviceType.desktop} {
+        height: ${({active, depth2Length}) => active ? `calc(${theme.headerTheme.menuDepth1Height.tablet} + (${theme.headerTheme.menuDepth2Height.tablet} * ${depth2Length}))` : `${theme.headerTheme.menuDepth2Height.tablet}`};
+        transition-property: height;
+        transition-duration: .4s;
+
         .navDepth01__li__link {
           display: block;
           width: 100%;
-          height: 44px;
+          height: ${theme.headerTheme.menuDepth2Height.tablet};
           padding: 12px 20px;
           box-sizing: border-box;
           font-size: 16px;
           text-align: left;
           border-bottom: 1px solid #ddd;
-          color: ${theme.fontColor.black};
+          color: ${({active}) => active ? `${theme.fontColor.main}` : `${theme.fontColor.black}`};
+          font-weight: bold;
         }
         .navDepth01__li__link::after {
           display: none;
@@ -148,16 +146,15 @@ const NavDepth01Li = styled.li`
           right: 20px;
           width: 16px;
           height: 8px;
-          background: ${theme.headerTheme.menuArrowImg} center/contain no-repeat;
-          transform: rotateZ(180deg);
+          background: url(${theme.headerTheme.menuArrowImg}) center/contain no-repeat;
+          transform: ${({active}) => active ? "rotateZ(180deg)" : "rotateZ(0deg)"};
           transition: 0.2s;
         }
-        .navDepth01__li__link.open {
-          font-weight: bold;
-          color: ${theme.fontColor.main};
-        }
-        .navDepth01__li__link.open::before {
-          transform: rotateZ(0deg);
+        .navDepth02 {
+          display: block;
+          position: static;
+          opacity: 1;
+          padding-top: 0;
         }
       }
     `;
@@ -229,10 +226,10 @@ const MenuBtn = styled.div`
           transition: 0.2s;
         }
         & span {
-          width: ${({menuOpen}) => (menuOpen ? "calc(100% + 1px)" : "")};
+          width: ${({menuOpen}) => menuOpen && "calc(100% + 1px)"};
         }
         & span:nth-child(1) {
-          transform: ${({menuOpen}) => (menuOpen ? "rotateZ(45deg) translate(4.5px, 4.5px)" : "")};
+          transform: ${({menuOpen}) => menuOpen && "rotateZ(45deg) translate(4.5px, 4.5px)"};
         }
         & span:nth-child(2) {
           opacity: ${({menuOpen}) => (menuOpen ? "0" : "1")};

@@ -13,9 +13,10 @@ import MenuDepth01 from "./MenuDepth01";
 const {HeaderInner} = CommonStyle;
 const {HeaderWrap, Header, MenuBtn} = HeaderStyle;
 
-const Navigation = () => {
+const Navigation = ({isWeb}) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isWeb, setIsWeb] = useState(true);
+
+  console.log("navi -> isWeb?", isWeb);
 
   const menuList = [
     {
@@ -58,12 +59,7 @@ const Navigation = () => {
     return maxLength;
   }
 
-  useEffect(() => {
-    window.addEventListener("resize", function(){
-        this.innerWidth < 1080 ? setIsWeb(false) : setIsWeb(true);
-        console.log("isWeb??", isWeb);
-    })
-  }, []);
+ 
 
   return (
     <HeaderWrap maxMenuLength={maxMenuLengthFunc()} isWeb={isWeb}>
@@ -86,7 +82,7 @@ const Navigation = () => {
           <ul className="navDepth01">
             {
                 menuList.map((item, index) => (
-                    <MenuDepth01 key={index} item={item}/>
+                    <MenuDepth01 key={index} index={index} item={item}/>
                 ))
             }
           </ul>

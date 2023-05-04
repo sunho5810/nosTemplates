@@ -1,3 +1,5 @@
+import menuArrow from "../res/images/common/m_menuArrow.png"
+
 const color = {
   main: "#F4A000",
   black: "#000"
@@ -59,7 +61,7 @@ const headerTheme = {
   headerHeight: { desktop: "100px", tablet: "60px"},
   menuDepth1Height: {desktop: "100px", tablet: "44px"},
   menuDepth2Height: {desktop: "40px", tablet: "44px"},
-  menuArrowImg: "url(/src/res/images/common/m_menuArrow.svg)",
+  menuArrowImg: menuArrow,
 };
 
 export const theme = {
