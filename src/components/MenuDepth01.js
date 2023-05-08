@@ -9,11 +9,11 @@ const MenuDepth01 = ({item, index}) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [active, setActive] = useState(false);
 
-  useEffect(() => {
-    console.log("active??", active);
-  }, [active]);
+  // useEffect(() => {
+  //   console.log("active??", active);
+  // }, [active]);
 
-  console.log("item.depth02.length?", item.depth02.length);
+  // console.log("item.depth02.length?", item.depth02.length);
 
   return (
     <NavDepth01Li active={active} depth2Length={item.depth02.length}>

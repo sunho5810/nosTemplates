@@ -12,7 +12,7 @@ const HeaderWrap = styled.header`
       box-sizing: border-box;
       transition-property: height;
       height: ${theme.headerTheme.headerHeight.desktop};
-      background-color: ${theme.bgColor.white};
+      background-color: ${theme.bgColor.transparent};
 
       .headerLogo {
         display: flex;
@@ -28,12 +28,17 @@ const HeaderWrap = styled.header`
           )
         )`};
         transition-duration: ${({isWeb}) => (isWeb ? "0.4s" : "0.2s")};
+        background-color: ${({isWeb}) => (isWeb ? `${theme.bgColor.white}` : `${theme.bgColor.transparent}`)};
+
+        .navDepth01__li__link{
+          color: ${({isWeb}) => (isWeb) && `${theme.fontColor.black}`};
+        }
 
         .navDepth02 {
-          opacity: ${({isWeb}) => (isWeb) ? "1" : "0"};
-          transition: ${({isWeb}) => (isWeb) ? "opacity 0.2s" : "opacity 0.5s"};
-          transition-delay: ${({isWeb}) => (isWeb) ? "0.1s" : "0"};
-          pointer-events: ${({isWeb}) => (isWeb) ? "auto" : "none"};
+          opacity: 1;
+          transition: opacity 0.2s;
+          transition-delay: 0.1s;
+          pointer-events: auto;
         }
       }
 
@@ -59,23 +64,16 @@ const Header = styled.div`
         height: 100%;
       }
 
-      .navDepth02 {
-        display: block;
-        width: 100%;
-        padding-top: 20px;
-        opacity: 0;
-        transition: opacity 0.05;
-        pointer-events: none;
-      }
-
       ${theme.deviceType.desktop} {
         height: ${theme.headerTheme.headerHeight.tablet};
         .navDepth01 {
           position: absolute;
-          top: calc(100%);
+          top: calc(100% - ${theme.headerTheme.headerHeight.tablet});
           left: ${({menuOpen}) => (menuOpen ? "0" : "100%")};
+          z-index: -1;
           width: 100%;
-          height: calc(100vh - ${theme.headerTheme.headerHeight.tablet});
+          height: calc(100vh);
+          padding-top: ${theme.headerTheme.headerHeight.tablet};
           flex-direction: column;
           background: ${theme.bgColor.white};
           transition-property: left;
@@ -99,7 +97,7 @@ const NavDepth01Li = styled.li`
         height: ${theme.headerTheme.menuDepth1Height.desktop};
         font-size: 1.25rem;
         font-weight: 500;
-        color: ${theme.fontColor.black};
+        color: ${theme.fontColor.white};
         cursor: pointer;
       }
       &:hover .navDepth01__li__link:after,
@@ -119,7 +117,17 @@ const NavDepth01Li = styled.li`
         color: ${theme.fontColor.main};
       }
 
+      .navDepth02 {
+        display: block;
+        width: 100%;
+        padding-top: 20px;
+        opacity: 0;
+        transition: opacity 0.05;
+        pointer-events: none;
+      }
+
       ${theme.deviceType.desktop} {
+        overflow: hidden;
         height: ${({active, depth2Length}) => active ? `calc(${theme.headerTheme.menuDepth1Height.tablet} + (${theme.headerTheme.menuDepth2Height.tablet} * ${depth2Length}))` : `${theme.headerTheme.menuDepth2Height.tablet}`};
         transition-property: height;
         transition-duration: .4s;

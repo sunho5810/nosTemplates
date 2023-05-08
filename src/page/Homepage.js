@@ -14,16 +14,16 @@ const Homepage = () => {
 
   const [isWeb, setIsWeb] = useState(true);
 
-  useEffect(() => {
-    console.log("isWeb33?", isWeb)
-  }, [isWeb]);
+  // useEffect(() => {
+  //   console.log("isWeb33?", isWeb)
+  // }, [isWeb]);
 
   useEffect(() => {
     window.innerWidth <= 1080 ? setIsWeb(false) : setIsWeb(true);
-    console.log("isWeb11?", isWeb);
+    // console.log("isWeb11?", isWeb);
     window.addEventListener("resize", function(){
       this.innerWidth <= 1080 ? setIsWeb(false) : setIsWeb(true);
-        console.log("isWeb22?", isWeb);
+        // console.log("isWeb22?", isWeb);
     })
   }, []);
   return (

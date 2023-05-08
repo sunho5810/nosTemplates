@@ -13,10 +13,10 @@ import MenuDepth01 from "./MenuDepth01";
 const {HeaderInner} = CommonStyle;
 const {HeaderWrap, Header, MenuBtn} = HeaderStyle;
 
+/* active 다른게 열리면 다른건 닫히게 작업하기 (나중에) */
+
 const Navigation = ({isWeb}) => {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  console.log("navi -> isWeb?", isWeb);
 
   const menuList = [
     {
@@ -58,8 +58,6 @@ const Navigation = ({isWeb}) => {
 
     return maxLength;
   }
-
- 
 
   return (
     <HeaderWrap maxMenuLength={maxMenuLengthFunc()} isWeb={isWeb}>

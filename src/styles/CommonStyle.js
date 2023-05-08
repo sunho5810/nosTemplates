@@ -16,7 +16,9 @@ const Wrap = styled.div`
 const Inner = styled.div`
   ${({ theme }) => {
     return css`
+      position: relative;
       width: ${theme.commonTheme.innerWidth};
+      height: 100%;
       margin: 0 auto;
 
       ${theme.deviceType.desktop}{

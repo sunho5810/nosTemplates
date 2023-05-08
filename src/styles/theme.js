@@ -52,7 +52,7 @@ const defaultStyle = {
 };
 
 const commonTheme = {
-  wrapPaddingTop: { desktop: "100px", tablet: "60px"},
+  wrapPaddingTop: { desktop: 0, tablet: 0},
   innerWidth: "1080px",
   sideSpace: {desktop: "40px", tablet: "20px"}
 };
