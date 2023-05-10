@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import CommonStyle from "../styles/CommonStyle";
-import HeaderStyle from "../styles/HeaderStyle";
-import MenuDepth01 from "./MenuDepth01";
+import CommonStyle from "../../../res/styles/CommonStyle";
+import HeaderStyle from "../../../res/styles/HeaderStyle";
 
 /* 
     styled 라이브러리 사용해보기

@@ -1,10 +1,10 @@
 import React from 'react'
-import MainVisual from '../components/MainVisual'
-import mainVisualImg from '../res/images/main/main_visual.png'
+import MainVisual from '../components/visual/MainVisual'
+import mainVisualImg from '/res/images/main/main_visual.png'
 import mainVisualImg01 from '../res/images/main/main_visual.png'
 import mainVisualImg02 from '../res/images/main/main_visual.png'
 import mainVisualImg03 from '../res/images/main/main_visual.png'
-import MainVisualSlide from '../components/MainVisualSlide'
+import MainVisualSlide from '../components/slider/type-A/MainVisualSlide'
 
 const Main = () => {
   const str = "귀사를 소개하는 홍보문구를 넣는 영역입니다.\n 홍보문구를 작성하여 회사를 소개하세요.";
@@ -41,8 +41,7 @@ const Main = () => {
       }
       mainVisualTxt = {str}
       /> */}
-      < MainVisualSlide slideSrcList = {slideSrcList}
-      />
+      <MainVisualSlide slideSrcList = {slideSrcList}/>
     </div>
   )
 }

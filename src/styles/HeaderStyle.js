@@ -93,7 +93,7 @@ const NavDepth01Li = styled.li`
         justify-content: center;
         align-items: center;
         position: relative;
-        width: 180px;
+        width: calc(720px / 4);
         height: ${theme.headerTheme.menuDepth1Height.desktop};
         font-size: 1.25rem;
         font-weight: 500;

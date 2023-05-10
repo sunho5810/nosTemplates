@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import HeaderStyle from '../styles/HeaderStyle'
+import HeaderStyle from '../../../styles/HeaderStyle'
 import MenuDepth02 from './MenuDepth02';
 
 const {NavDepth01Li} = HeaderStyle;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Navigation from '../components/Navigation'
-import Footer from '../components/Footer'
+import Navigation from '../components/navigation/type-A/Navigation'
+import Footer from '../components/footer/type-A/Footer'
 import { Route, Routes } from 'react-router-dom'
 import Main from './Main'
 import { ThemeProvider } from 'styled-components'

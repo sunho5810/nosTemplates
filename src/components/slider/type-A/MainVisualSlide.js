@@ -2,10 +2,10 @@ import React from 'react'
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import CommonStyle from '../styles/CommonStyle';
+import CommonStyle from '../../../styles/CommonStyle';
 import styled, {css} from 'styled-components';
-import prevArrow from '../res/images/main/mainSliderArrow--prev.svg'
-import nextArrow from '../res/images/main/mainSliderArrow--next.svg'
+import prevArrow from '../img/type-A/mainSliderArrow--prev.svg'
+import nextArrow from '../img/type-A/mainSliderArrow--next.svg'
 import { useCallback } from 'react';
 import { useRef } from 'react';
 
@@ -40,6 +40,7 @@ const MainVisualWrap = styled.div`
 
             .mainVisualTxtWrap__tit{
                 font-size: 3.75rem;
+                font-weight: normal;
             }
             .mainVisualTxtWrap__txt{
                 margin-top: 30px;
@@ -83,6 +84,10 @@ const MainSlider = styled(Slider)`
                 background-color: #fff;
             }
 
+            .slick-prev, .slick-next{
+                display: none !important;
+            }
+
             .slick-prev::before,
             .slick-next::before {
               opacity: 0;
@@ -108,7 +113,9 @@ const CustomPrevArrow = styled.div`
     background: url(${prevArrow}) center/contain no-repeat;
     cursor: pointer;
 `
-
+const SliderInner = styled(Inner)`
+    position: relative;
+`
 
 const MainVisualSlide = ({slideSrcList}) => {
 
@@ -118,7 +125,9 @@ const MainVisualSlide = ({slideSrcList}) => {
         dots: true,
         arrow: false,
         infinite: true,
+        // autoplay: true,
         speed: 500,
+        autyplaySpeed: 3000,
         slidesToShow: 1,
         slidesToScroll: 1,
         nextArrow: (
@@ -129,7 +138,9 @@ const MainVisualSlide = ({slideSrcList}) => {
         ),
         appendDots: (dots) => (
             <div>
-                <ul className='dotsList'> {dots} </ul>
+                <CustomPrevArrow onClick={previous}/>
+                    <ul className='dotsList'> {dots} </ul>
+                <CustomNextArrow onClick={next}/>
             </div>
           ),
         dotsClass: 'dots_custom',
@@ -144,7 +155,7 @@ const MainVisualSlide = ({slideSrcList}) => {
         {
             slideSrcList.map((item, index) => (
                 <MainVisualWrap key={index} imgSrc={item.img}>
-                    <Inner>
+                    <SliderInner>
                         <div className='mainVisualTxtWrap'>
                             <h2 className='mainVisualTxtWrap__tit'>
                                 <b>{item.boldedTit}</b><br/>
@@ -154,7 +165,7 @@ const MainVisualSlide = ({slideSrcList}) => {
                                 {item.text}
                             </p>
                         </div>
-                    </Inner>
+                    </SliderInner>
                 </MainVisualWrap>
             ))
         }

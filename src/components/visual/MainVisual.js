@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, {css} from 'styled-components'
-import CommonStyle from '../styles/CommonStyle'
+import CommonStyle from '../../styles/CommonStyle'
 
 
 const {Inner} = CommonStyle;
